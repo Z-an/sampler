@@ -84,5 +84,5 @@ def samples_to_csv(df,cohort_name):
 
     for i,sample in enumerate(samples):
         output = pd.DataFrame(sample.email.values,columns=['email'])
-        output.to_csv('output/{}.csv'.format(cohort_name+'_'+str(i)))
+        output.to_csv('output/{}.csv'.format(cohort_name+'_'+str(i)),index=False,header=False)
     
