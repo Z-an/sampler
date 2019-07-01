@@ -21,11 +21,14 @@ def ids_to_emails(cohort_file,remove_co_transactors=True):
         cohort = pd.read_csv('input/'+str(cohort_file))
 
         ## Prep the dataframes for merge.
-        try: 
-            cohort = cohort.rename(index=str, columns={"ID":"id"})
+        try:
+            emails = emails.dropna()
+            cohort = cohort.dropna()
             emails.id = emails.id.apply(lambda x:int(x))
             cohort.id = cohort.id.apply(lambda x:int(x))
-        except: print('Renaming failed')
+            
+        except: 
+            pass
 
         error = 'Email-cohort merge failed'
         e_cohort = emails.merge(cohort)
